@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}All Issues{% endblock %}
+{% block content %}
+<h1>All Issues</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Priority</th>
+        <th>Status</th>
+        <th>Created By</th>
+        <th>Actions</th>
+    </tr>
+    {% for issue in issues %}
+    <tr>
+        <td>{{ issue.title }}</td>
+        <td>{{ issue.description }}</td>
+        <td>{{ issue.priority }}</td>
+        <td>{{ issue.status }}</td>
+        <td>{{ issue.created_by }}</td>
+        <td><a href="{{ url_for('issue_detail', id=str(issue._id)) }}">View</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

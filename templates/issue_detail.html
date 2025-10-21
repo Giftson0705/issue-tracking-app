@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Issue Details{% endblock %}
+{% block content %}
+<h1>{{ issue.title }}</h1>
+<p><b>Description:</b> {{ issue.description }}</p>
+<p><b>Priority:</b> {{ issue.priority }}</p>
+<p><b>Status:</b> {{ issue.status }}</p>
+<p><b>Created By:</b> {{ issue.created_by }}</p>
+
+<form method="POST">
+    <label>Update Status:</label>
+    <select name="status">
+        <option value="open" {% if issue.status=='open' %}selected{% endif %}>Open</option>
+        <option value="in progress" {% if issue.status=='in progress' %}selected{% endif %}>In Progress</option>
+        <option value="closed" {% if issue.status=='closed' %}selected{% endif %}>Closed</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
+{% endblock %}
